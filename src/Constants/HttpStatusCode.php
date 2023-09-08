@@ -13,14 +13,5 @@ class HttpStatusCode {
     static $tooManyRequests = 429;
     static $internalServerError = 500;
     static $serviceUnavailable = 503;
-    
-
-
-   
-
-
-
-
 }
-
 ?>
