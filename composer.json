@@ -1,6 +1,5 @@
 {
     "name": "anchor/laravel",
-    "description": "SDK for laravel",
     "autoload": {
         "psr-4": {
             "Anchor\\Sdk\\": "src/"
@@ -12,5 +11,31 @@
             "email": "qudusqazeem@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0",
+        "guzzlehttp/guzzle": "~6|~7",
+        "ext-json": "*"
+      },
+      "require-dev": {
+        "mockery/mockery": "^1.0",
+        "orchestra/testbench": "3.8.*|4.*",
+        "phpunit/phpunit": "^8.0",
+        "illuminate/contracts": "^5.8.15|^6.0",
+        "illuminate/filesystem": "^5.8.15|^6.0",
+        "illuminate/database": "^5.8.15|^6.0",
+        "phpunit/php-code-coverage": "^7.0@dev"
+      },
+      "description": "Anchor Laravel SDK",
+      "keywords": [
+        "php",
+        "github",
+        "laravel",
+        "Open Source",
+        "payments",
+        "anchor",
+        "thepeer",
+        "laravel 6",
+        "laravel 7",
+        "laravel 8"
+      ]
 }
