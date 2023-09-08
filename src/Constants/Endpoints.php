@@ -1,5 +1,5 @@
 <?php 
-namespace Anchor\Sdk\Constants;
+namespace Anchor\Constants;
 class Endpoints{
     ///Base urls
     static $baseUrlSandbox = "https://api.sandbox.getanchor.co/api/v1/";

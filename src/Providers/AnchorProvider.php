@@ -1,5 +1,7 @@
 <?php
 namespace Anchor\Sdk\Providers;
+
+use Anchor\AnchorSdk;
 use Anchor\Sdk\Anchor;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +16,7 @@ use Illuminate\Support\ServiceProvider;
     public function register(): void
     {
         $this->app->bind('anchor-laravel-sdk', function () {
-            return new Anchor;
+            return new AnchorSdk;
         });
     }
 
