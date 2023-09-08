@@ -1,0 +1,16 @@
+{
+    "name": "anchor/laravel",
+    "description": "SDK for laravel",
+    "autoload": {
+        "psr-4": {
+            "Anchor\\Sdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Qazeem Abiodun",
+            "email": "qudusqazeem@gmail.com"
+        }
+    ],
+    "require": {}
+}
