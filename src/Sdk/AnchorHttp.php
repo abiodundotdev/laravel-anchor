@@ -2,6 +2,7 @@
 namespace Anchor\Sdk;
 
 use Anchor\Constants\Endpoints;
+use Anchor\Constants\HttpStatusCode;
 use Anchor\Exceptions\ConflictException;
 use Anchor\Exceptions\ForbiddenException;
 use Anchor\Exceptions\NotFoundException;
@@ -65,26 +66,23 @@ class AnchorHttp{
     private function processResponse($payload, $response)
     {
         switch ($response->getStatusCode()) {
-            case 201:
-            case 200:
+            case HttpStatusCode::$ok:
+            case HttpStatusCode::$accepted:
+            case HttpStatusCode::$created:
                 return $payload;
-            case 401:
+            case HttpStatusCode::$unauthorized :
                 throw new UnauthorizedException($payload->message);
-            case 403:
+            case HttpStatusCode::$forbidden :
                 throw new ForbiddenException($payload->message);
-            case 404:
+            case HttpStatusCode::$notFound :
                 throw new NotFoundException($payload->message);
-            case 409:
+            case HttpStatusCode::$conflict :
                 throw new ConflictException($payload->message);
-            case 412:
+            case HttpStatusCode::$preconditionFailed :
                 throw new PreconditionFailedException($payload->message);
-            case 422:
-                foreach ($payload->errors as $error) {
-                    throw new \Exception($error[0]);
-                }
-            case 429:
+            case HttpStatusCode::$tooManyRequests :
                 throw new TooManyRequestException($payload->message);
-            case 503:
+            case HttpStatusCode::$serviceUnavailable :
                 throw new ServiceUnavailableException($payload->message);
             default:
                 throw new ServerErrorException($payload->message);
@@ -92,5 +90,11 @@ class AnchorHttp{
 
     }
 }
+
+
+// case 422:
+            //     foreach ($payload->errors as $error) {
+            //         throw new \Exception($error[0]);
+            //     }
 
 ?>

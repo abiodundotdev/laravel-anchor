@@ -1,8 +1,7 @@
 <?php
-namespace Anchor\Sdk\Providers;
+namespace Anchor\Providers;
 
 use Anchor\AnchorSdk;
-use Anchor\Sdk\Anchor;
 use Illuminate\Support\ServiceProvider;
 
  /**

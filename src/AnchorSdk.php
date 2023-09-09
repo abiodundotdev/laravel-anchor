@@ -4,7 +4,7 @@ namespace Anchor;
 use Anchor\Sdk\Anchorbanking;
 use Anchor\Sdk\AnchorBillsPayment;
 use Anchor\Sdk\AnchorOnboarding;
-use Anchor\Sdk\AnchorCollection;
+use Anchor\Sdk\AnchorCollections;
 use Anchor\Sdk\AnchorTransfers;
 use Anchor\Sdk\AnchorSubaccount;
 use Anchor\Sdk\AnchorTransactions;
@@ -17,9 +17,9 @@ class AnchorSdk{
     {
         return new AnchorOnboarding();
     }
-    public function collections() : AnchorCollection
+    public function collections() : AnchorCollections
     {
-        return new AnchorCollection();
+        return new AnchorCollections();
     }
     public function banking() : AnchorBanking
     {

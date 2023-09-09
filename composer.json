@@ -12,8 +12,8 @@
         }
     ],
     "require": {
-        "illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0",
-        "guzzlehttp/guzzle": "~6|~7",
+        "illuminate/support": "^5.0 || ^6.0 || ^7.0 || ^8.0 || 9.0 || ^10.0",
+        "guzzlehttp/guzzle": "^7.2",
         "ext-json": "*"
       },
       "require-dev": {
@@ -37,5 +37,15 @@
         "laravel 6",
         "laravel 7",
         "laravel 8"
-      ]
+      ],
+      "extra": {
+        "laravel": {
+            "providers": [
+                "Anchor\\Providers\\AnchorProvider"
+            ],
+            "aliases": {
+                "Anchor": "Anchor\\Facade\\Anchor"
+            }
+        }
+    }
 }

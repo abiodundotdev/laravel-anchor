@@ -1,8 +1,9 @@
 <?php 
-namespace Anchor\Sdk\Constants;
+namespace Anchor\Constants;
 
 class HttpStatusCode {
-    static $success = 200;
+    static $ok = 200;
+    static $created = 201;
     static $accepted = 202;
     static $badRequest = 400;
     static $unauthorized = 400;

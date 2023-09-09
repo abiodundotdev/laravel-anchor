@@ -1,5 +1,7 @@
 <?php  
-namespace Anchor\Sdk
-class AnchorBillsPayment{}
+namespace Anchor\Sdk;
+class AnchorBillsPayment extends AnchorHttp{
+    
+}
 
 ?>

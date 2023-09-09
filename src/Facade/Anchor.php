@@ -1,5 +1,5 @@
 <?php 
-namespace Anchor\Sdk\Facade;
+namespace Anchor\Facade;
 use Illuminate\Support\Facades\Facade; 
 /**
  * Summary of Anchor

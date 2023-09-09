@@ -1,5 +1,5 @@
 <?php  
 namespace Anchor\Sdk;
-class AnchorCollection{}
+class AnchorCollections{}
 
 ?>
