@@ -31,7 +31,11 @@ class AnchorHttp{
     }
     public function get($uri, array $options = [])
     {
-        return $this->request($this->client->get($uri, $options));
+        return $this->request($this->client->get($uri, 
+        [
+            'query' =>  $options
+        ] 
+    ));
     }
     public function put($uri, array $options = [])
     {
