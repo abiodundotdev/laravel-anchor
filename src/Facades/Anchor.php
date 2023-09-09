@@ -1,5 +1,6 @@
 <?php 
-namespace Anchor\Facade;
+namespace Anchor\Facades;
+
 use Illuminate\Support\Facades\Facade; 
 /**
  * Summary of Anchor
@@ -10,7 +11,7 @@ class Anchor extends Facade{
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'anchor-sdk';
+        return 'anchor-laravel-sdk';
     }
 }
 

@@ -125,7 +125,7 @@ class ComposerStaticInit0da6a15c153e95766bd85f35947c1a1b
         ),
         'A' => 
         array (
-            'Anchor\\Sdk\\' => 11,
+            'Anchor\\' => 7,
         ),
     );
 
@@ -248,8 +248,8 @@ class ComposerStaticInit0da6a15c153e95766bd85f35947c1a1b
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -347,7 +347,7 @@ class ComposerStaticInit0da6a15c153e95766bd85f35947c1a1b
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Anchor\\Sdk\\' => 
+        'Anchor\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

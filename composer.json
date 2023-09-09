@@ -44,7 +44,7 @@
                 "Anchor\\Providers\\AnchorProvider"
             ],
             "aliases": {
-                "Anchor": "Anchor\\Facade\\Anchor"
+                "AnchorSdk": "Anchor\\Facades\\Anchor"
             }
         }
     }
