@@ -1,4 +1,4 @@
-# laravel-paystack
+# anchor-laravel
 
 > A Laravel Package for working with Anchor seamlessly
 
