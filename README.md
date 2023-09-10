@@ -60,7 +60,6 @@ ANCHOR_SANDBOX_KEY=xxxxxxxxxxxxx
 ANCHOR_ENV=LIVE|SANDBOX
 ```
 
-
 ```php
 <?php
 
