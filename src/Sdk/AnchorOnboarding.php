@@ -1,13 +1,13 @@
 <?php  
 namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
+/** Onboarding endpoints
+*   Each methods corresponds to the endpoint as seen on the doucmentation
+*/
 class AnchorOnboarding extends AnchorHttp{
     private $customerEndpoint = Endpoints::$customers;
     private $documentEndpoint = Endpoints::$documents;
     private $individualEndpoint = Endpoints::$individual;
-    /** Create a customer
-    *
-    */
     public function createCustomer(array $data, $type){
         $body =  [
             "data" => $data, 
@@ -39,41 +39,33 @@ class AnchorOnboarding extends AnchorHttp{
     public function officersRequirement($customerId, $include = ""){
         return $this->get($this->customerEndpoint."/$customerId/officers-requirement",  ['include' => $include]);
     }
-
     public function validateKYCForIndividual($customerId, array $data = []){
         return $this->post($this->customerEndpoint."/$customerId/verification/individual",  ['data' => $data]);
     }
-
     public function validateKYCForBusiness($customerId){
         return $this->post($this->customerEndpoint."/$customerId/verification/business");
     }
-
     public function downloadDocument($customerId, $documentId){
         return $this->get($this->documentEndpoint."download-document/$customerId/$documentId");
     }
-
     public function fetchDocument($customerId, $documentId, $include = ""){
         return $this->get($this->documentEndpoint."/$customerId/$documentId", ['include' => $include]);
     }
-
     public function fetchAllDocuments($customerId, $include = ""){
         return $this->get($this->documentEndpoint."/$customerId", ['include' => $include]);
     }
-
     public function uploadDocument($customerId, $documentId, $textData = "", array $data){
         $body =  [
             "data" => $data, 
         ];
         return $this->post($this->documentEndpoint."/$customerId/$documentId?textData=$textData", $body);
     }
-
     public function createNextOfKin($customerId, array $data){
         $body =  [
             "data" => $data, 
         ];
         return $this->post($this->individualEndpoint."/$customerId/next-of-kin", $body);
     }
-
     public function updateNextOfKin($customerId, $nexOfKinId, array $data){
         $body =  [
             "data" => $data, 
@@ -84,12 +76,10 @@ class AnchorOnboarding extends AnchorHttp{
         return $this->get($this->individualEndpoint."/$customerId/next-of-kin/$nexOfKinId", ['include' => $include]);
 
     }
-
     public function fetchAllNextOfKins($customerId, $include = ""){
         return $this->get($this->individualEndpoint."/$customerId/next-of-kin", ['include' => $include]);
 
     }
-
     public function deleteNextOfKin($customerId, $nexOfKinId){
         return $this->delete($this->individualEndpoint."/$customerId/next-of-kin/$nexOfKinId");
     }
