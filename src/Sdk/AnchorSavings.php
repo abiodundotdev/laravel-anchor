@@ -36,6 +36,6 @@ class AnchorSavings extends AnchorHttp{
     public function fetchSavingsDeposit($depositId, $include = ""){
         return $this->get($this->savingsEndpoint."/deposit/$depositId", ['include'=> $include]);
     }
-}
+} 
 
 ?>

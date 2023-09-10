@@ -5,6 +5,7 @@ use Anchor\Sdk\Anchorbanking;
 use Anchor\Sdk\AnchorBillsPayment;
 use Anchor\Sdk\AnchorOnboarding;
 use Anchor\Sdk\AnchorCollections;
+use Anchor\Sdk\AnchorHttp;
 use Anchor\Sdk\AnchorTransfers;
 use Anchor\Sdk\AnchorSubaccount;
 use Anchor\Sdk\AnchorTransactions;
@@ -52,6 +53,22 @@ class AnchorSdk{
     public function webhook() : AnchorWebhook
     {
         return new AnchorWebhook();
+    }
+    public function custom($method, $url, $data = [])
+    {
+        $anchorHttp = new AnchorHttp();
+        switch (strtolower($method)) {
+            case 'post':
+                return $anchorHttp->post($url, $data);
+            case 'get':
+                return $anchorHttp->get($url, $data);
+            case 'patch':
+                return $anchorHttp->patch($url, $data);
+            case 'delete':
+                return $anchorHttp->delete($url, $data);
+            default:
+                return $anchorHttp->put($url, $data);
+        } ;
     }
 }
 

@@ -20,13 +20,12 @@ class AnchorHttp{
     public $client;
     public function __construct() {
         $this->client = new Client([
-            'base_uri' => Endpoints::$baseUrlSandbox,
+            'base_uri' => $this->deriveBaseUrl(),
             'headers' => [
-                'x-api-key' => "",
+                'x-anchor-key' => $this->deriveSecretKey(),
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],
-            'http_errors' => false
         ]);
     }
     public function get($uri, array $options = [])
@@ -55,6 +54,21 @@ class AnchorHttp{
     public function patch($uri, array $options = []) 
     {
         return $this->request($this->client->patch($uri, $options));
+    }
+
+    private function deriveBaseUrl() : string{
+        $currentEnv = env("ANCHOR_ENV");
+        if($currentEnv == "LIVE"){
+            return Endpoints::$baseUrlLive;
+        }
+        return Endpoints::$baseUrlSandbox;
+    }
+    private function deriveSecretKey() : string{
+        $currentEnv = env("ANCHOR_ENV");
+        if($currentEnv == "LIVE"){
+            return env("ANCHOR_LIVE_KEY");
+        }
+        return env("ANCHOR_SANDBOX_KEY");
     }
 
     private function request(ResponseInterface $response){
