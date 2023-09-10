@@ -5,6 +5,11 @@ use Anchor\Constants\Endpoints;
 
 class AnchorBanking extends AnchorHttp{
     private $accountEndpoint = Endpoints::$accounts;
+    private $feesEndpoint = Endpoints::$fee;
+    private $statementEndpoint = Endpoints::$statements;
+
+
+
     public function createDepositAccount($data){
         $body =  [
             "data" => $data, 
@@ -40,6 +45,32 @@ class AnchorBanking extends AnchorHttp{
     public function fetchRootAccounts($accountType, $include = ""){
         return $this->post($this->accountEndpoint."/root-accounts?accountType=$accountType", ["include" => $include]);
     }
+    public function createFees($data){
+        return $this->post($this->feesEndpoint."/custom-fee", ["data" => $data]);
+    }
+    public function reverseFee($feeId){
+        return $this->post($this->feesEndpoint."/reverse/$feeId");
+    }
+    public function fetchAllFees(array $filter, $page, $size, $sort, $include = ""){
+        return $this->get($this->feesEndpoint."/charged-by-organization", [...$filter,'page'=> $page, 'size'=>$size, 'sort'=> $sort,'include'=> $include]);
+    }
+    public function fetchFee($feeId, $include = ""){
+        return $this->post($this->feesEndpoint."/charged-by-organization/$feeId", ['include'=> $include]);
+    }
+    public function createStatement($data){
+        return $this->post($this->statementEndpoint, ["data" => $data]);
+    }
+    
+    public function fetchAllStatement(array $filter, $page, $size,$sort,$include = ""){
+        return $this->get($this->feesEndpoint."/charged-by-organization", [...$filter,'page'=> $page, 'size'=>$size, 'sort'=> $sort,'include'=> $include]);
+    }
+    public function fetchStatement($statementId, $include = ""){
+        return $this->get($this->statementEndpoint."/$statementId", ['include'=> $include]);
+    }
+    public function downloadStatement($statementId, $include = ""){
+        return $this->get($this->statementEndpoint."/download/$statementId", ['include'=> $include]);
+    }
+    
 
 }
 ?>
