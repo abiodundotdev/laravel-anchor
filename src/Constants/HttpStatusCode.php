@@ -6,7 +6,7 @@ class HttpStatusCode {
     static $created = 201;
     static $accepted = 202;
     static $badRequest = 400;
-    static $unauthorized = 400;
+    static $unauthorized = 401;
     static $forbidden = 403;
     static $notFound = 404;
     static $conflict = 409;

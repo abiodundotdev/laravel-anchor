@@ -4,9 +4,16 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorTransfers extends AnchorHttp{
-    protected $transferEndpoint = Endpoints::$transfers;
-    protected $paymentEndpoint = Endpoints::$transfers;
-    protected $counterPartiesEndpoint = Endpoints::$counterParties;
+    protected $transferEndpoint;
+    protected $paymentEndpoint;
+    protected $counterPartiesEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->transferEndpoint = Endpoints::$transfers;
+        $this->paymentEndpoint = Endpoints::$payments;
+        $this->counterPartiesEndpoint = Endpoints::$counterParties;
+    }
 
     public function createBulkTransfer(array $data){
         return $this->post($this->transferEndpoint."/bulk", ['data'=> $data]);

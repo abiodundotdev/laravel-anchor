@@ -4,7 +4,12 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorReconcillation extends AnchorHttp{
-    private $reportsEndpoint = Endpoints::$reports;
+    private $reportsEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->reportsEndpoint = Endpoints::$reports;
+    }
 
     public function fetchReport($reportId, $include = ""){
         return $this->get($this->reportsEndpoint."/$reportId", ['include'=> $include]);

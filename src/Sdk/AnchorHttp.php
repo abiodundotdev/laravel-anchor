@@ -30,7 +30,7 @@ class AnchorHttp{
     }
     public function get($uri, array $options = [])
     {
-        return $this->request($uri, 
+        return $this->request("GET", $uri, 
         [
             'query' =>  $options
         ] 
@@ -38,22 +38,22 @@ class AnchorHttp{
     }
     public function put($uri, array $options = [])
     {
-        return $this->request($uri, $options);
+        return $this->request("PUT",$uri, $options);
     }
     public function post($uri, array $options = []) 
     {
-        return $this->request($uri,  [
+        return $this->request("POST", $uri,  [
             'form_params' => $options
         ]
         );
     }
     public function delete($uri, array $options = []) 
     {
-        return $this->request($uri, $options);
+        return $this->request("DELETE", $uri, $options);
     }
     public function patch($uri, array $options = []) 
     {
-        return $this->request($uri, $options);
+        return $this->request("PATCH", $uri, $options);
     }
 
     private function deriveBaseUrl() : string{

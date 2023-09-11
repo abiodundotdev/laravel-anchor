@@ -4,8 +4,14 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorWebhook extends AnchorHttp{
-    private $webhookEndpoint = Endpoints::$webhooks;
-    private $eventEndpoint = Endpoints::$events;
+    private $webhookEndpoint;
+    private $eventEndpoint ;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->webhookEndpoint = Endpoints::$webhooks;
+        $this->eventEndpoint = Endpoints::$events;
+    }
 
     public function createWebhook(array $data){
         return $this->post($this->webhookEndpoint, ['data'=> $data]);

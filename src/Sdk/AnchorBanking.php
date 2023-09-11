@@ -4,10 +4,16 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorBanking extends AnchorHttp{
-    private $accountEndpoint = Endpoints::$accounts;
-    private $feesEndpoint = Endpoints::$fee;
-    private $statementEndpoint = Endpoints::$statements;
-
+    private $accountEndpoint;
+    private $feesEndpoint;
+    private $statementEndpoint;
+    
+    public function __construct() {
+        parent::__construct(); 
+        $this->accountEndpoint = Endpoints::$accounts;
+        $this->feesEndpoint = Endpoints::$fee;
+        $this->statementEndpoint = Endpoints::$statements;
+    }
 
 
     public function createDepositAccount($data){

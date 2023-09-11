@@ -5,9 +5,18 @@ use Anchor\Constants\Endpoints;
 *   Each methods corresponds to the endpoint as seen on the doucmentation
 */
 class AnchorOnboarding extends AnchorHttp{
-    private $customerEndpoint = Endpoints::$customers;
-    private $documentEndpoint = Endpoints::$documents;
-    private $individualEndpoint = Endpoints::$individual;
+    private $customerEndpoint;
+    private $documentEndpoint;
+    private $individualEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->customerEndpoint = Endpoints::$customers;
+        $this->documentEndpoint = Endpoints::$documents;
+        $this->individualEndpoint = Endpoints::$individual;
+    }
+
+
     public function createCustomer(array $data, $type){
         $body =  [
             "data" => $data, 

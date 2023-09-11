@@ -2,8 +2,14 @@
 namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 class AnchorCollections extends AnchorHttp{
-    private $virtualNUBANendpoint = Endpoints::$virtualNubans;
-    private $paymentsEndpoint = Endpoints::$payments;
+    private $virtualNUBANendpoint;
+    private $paymentsEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->virtualNUBANendpoint = Endpoints::$virtualNubans;
+        $this->paymentsEndpoint = Endpoints::$payments;
+    }
 
 
     public function createVirtualNUBAN($data){

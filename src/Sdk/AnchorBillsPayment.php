@@ -2,7 +2,13 @@
 namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 class AnchorBillsPayment extends AnchorHttp{
-    private $billsEndpoint = Endpoints::$bills;
+    private $billsEndpoint;
+    
+    public function __construct() {
+        parent::__construct(); 
+        $this->billsEndpoint = Endpoints::$bills;
+    }
+    
     public function fetchAllBillers(array $filter, $page, $size,$sort,$include = ""){
         return $this->get($this->billsEndpoint."/billers", [ ...$filter,'page'=> $page, 'size'=>$size, 'sort'=> $sort,'include'=> $include]);
     }

@@ -6,6 +6,11 @@ use Anchor\Constants\Endpoints;
 class AnchorTransactions extends AnchorHttp{
     private $transactionsEndpoint = Endpoints::$transactions;
 
+    public function __construct() {
+        parent::__construct(); 
+        $this->transactionsEndpoint = Endpoints::$transactions;
+    }
+
     public function fetchTransaction($transactionId, $include = ""){
         return $this->get($this->transactionsEndpoint."/$transactionId", ['include'=> $include]);
     }

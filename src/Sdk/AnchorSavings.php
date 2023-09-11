@@ -4,7 +4,12 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorSavings extends AnchorHttp{
-    private $savingsEndpoint = Endpoints::$savings;
+    private $savingsEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->savingsEndpoint = Endpoints::$savings;
+    }
 
     public function createSavings(array $data){
         return $this->post($this->savingsEndpoint, ['data'=> $data]);
