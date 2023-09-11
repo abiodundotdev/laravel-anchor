@@ -105,7 +105,6 @@ class AppController extends Controller
 
 ## NOTE
 
-
 > Note that to pass the data argument, check the documentation and fill the fields with any random values, vist [https://wtools.io/convert-json-to-php-array](https://wtools.io/convert-json-to-php-array) and paste the json to convert to a php array, this will ease the stress of manually constructing an array for the json body  
 
 
