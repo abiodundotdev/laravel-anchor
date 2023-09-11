@@ -54,7 +54,7 @@ php artisan vendor:publish --provider="Anchor\Providers\AnchorProvider"
 
 ## Usage
 
-Open your .env file and add your secret key, current enviroment either live or sandbox:
+Open your .env file and add your secret key, current environment either live or sandbox:
 
 ```php
 ANCHOR_LIVE_KEY=xxxxxxxxxxxxx
@@ -145,7 +145,7 @@ $collections->fetchpayment();
 
 ## NOTE
 
-> Every grouped endpoints on the [documentation](https://docs.getanchor.co/) has the same format as above. The follow the simplified way of
+> Every grouped endpoints on the [documentation](https://docs.getanchor.co/) has the same format as above. They follow the simplified way of, 
 ```php 
 AnchorSdk::groupname()->endpointname()
 ```
