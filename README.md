@@ -1,6 +1,6 @@
 # anchor-laravel
 
-> A Laravel Package for working with Anchor seamlessly
+> A Laravel Package for working with [Anchor](https://getanchor.co/) APIs seamlessly
 
 ## Installation
 
@@ -10,6 +10,8 @@ To get the latest version of Laravel Anchor, simply require it
 ```bash
 composer require anchor/laravel
 ```
+
+
 
 Or add the following line to the require block of your `composer.json` file.
 
