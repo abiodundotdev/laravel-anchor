@@ -30,30 +30,30 @@ class AnchorHttp{
     }
     public function get($uri, array $options = [])
     {
-        return $this->request($this->client->get($uri, 
+        return $this->request($uri, 
         [
             'query' =>  $options
         ] 
-    ));
+    );
     }
     public function put($uri, array $options = [])
     {
-        return $this->request($this->client->put($uri, $options));
+        return $this->request($uri, $options);
     }
     public function post($uri, array $options = []) 
     {
-        return $this->request($this->client->post($uri,  [
+        return $this->request($uri,  [
             'form_params' => $options
         ]
-        ));
+        );
     }
     public function delete($uri, array $options = []) 
     {
-        return $this->request($this->client->delete($uri, $options));
+        return $this->request($uri, $options);
     }
     public function patch($uri, array $options = []) 
     {
-        return $this->request($this->client->patch($uri, $options));
+        return $this->request($uri, $options);
     }
 
     private function deriveBaseUrl() : string{
@@ -71,39 +71,54 @@ class AnchorHttp{
         return env("ANCHOR_SANDBOX_KEY");
     }
 
-    private function request(ResponseInterface $response){
+    private function request($method, $url, $data = []){
+        $response = "";
         try {
+            switch (strtolower($method)) {
+                case 'post':
+                    $response = $this->client->post($url, $data);
+                    break;
+                case 'get':
+                    $response = $this->client->get($url, $data);
+                    break;
+                case 'patch':
+                    $response = $this->client->patch($url, $data);
+                    break;
+                case 'delete':
+                    $response = $this->client->delete($url, $data);
+                    break;
+                default:
+                    $response = $this->client->put($url, $data);
+            } ;
             $responseBody = json_decode($response->getBody()->getContents());
-            return $this->processResponse($responseBody, $response);
+            return $responseBody;
         } catch (GuzzleException $e) {
-            throw new ServerErrorException($e->getMessage());
+            $this->processError($e);
         }
         
     }
 
-    private function processResponse($payload, $response)
+    private function processError(GuzzleException $e)
     {
-        switch ($response->getStatusCode()) {
-            case HttpStatusCode::$ok:
-            case HttpStatusCode::$accepted:
-            case HttpStatusCode::$created:
-                return $payload;
+        $errorStatusCode = $e->getCode();
+        $errorMessage = $e->getMessage();
+        switch ($errorStatusCode) {
             case HttpStatusCode::$unauthorized :
-                throw new UnauthorizedException($payload->message);
+                throw new UnauthorizedException($errorMessage);
             case HttpStatusCode::$forbidden :
-                throw new ForbiddenException($payload->message);
+                throw new ForbiddenException($errorMessage);
             case HttpStatusCode::$notFound :
-                throw new NotFoundException($payload->message);
+                throw new NotFoundException($errorMessage);
             case HttpStatusCode::$conflict :
-                throw new ConflictException($payload->message);
+                throw new ConflictException($errorMessage);
             case HttpStatusCode::$preconditionFailed :
-                throw new PreconditionFailedException($payload->message);
+                throw new PreconditionFailedException($errorMessage);
             case HttpStatusCode::$tooManyRequests :
-                throw new TooManyRequestException($payload->message);
+                throw new TooManyRequestException($errorMessage);
             case HttpStatusCode::$serviceUnavailable :
-                throw new ServiceUnavailableException($payload->message);
+                throw new ServiceUnavailableException($errorMessage);
             default:
-                throw new ServerErrorException($payload->message);
+                throw new ServerErrorException($errorMessage);
         }
 
     }

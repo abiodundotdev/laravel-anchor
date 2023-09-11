@@ -4,7 +4,12 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorSubaccount extends AnchorHttp{
-    private $subAccountEndpoint = Endpoints::$subAccounts;
+    private $subAccountEndpoint;
+
+    public function __construct() {
+        parent::__construct(); 
+        $this->subAccountEndpoint = Endpoints::$subAccounts;
+    }
 
     public function createSubaccount(array $data){
         return $this->post($this->subAccountEndpoint, ['data'=> $data]);
@@ -21,6 +26,10 @@ class AnchorSubaccount extends AnchorHttp{
     public function fetchAllSubaccounts(array $filter, $page, $size,$sort,$include = ""){
         return $this->get($this->subAccountEndpoint, [...$filter,'page'=> $page, 'size'=>$size, 'sort'=> $sort,'include'=> $include]);
     }
+    public function testAccount(){
+        return "I am currently testing your account ooo  and sdk is ".env("ANCHOR_LIVE_KEY");
+    }
+
 }
 
 ?>
