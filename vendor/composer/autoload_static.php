@@ -126,6 +126,7 @@ class ComposerStaticInit0da6a15c153e95766bd85f35947c1a1b
         'A' => 
         array (
             'Anchor\\' => 7,
+            'AnchorTest\\' => 11,
         ),
     );
 
@@ -350,6 +351,10 @@ class ComposerStaticInit0da6a15c153e95766bd85f35947c1a1b
         'Anchor\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'AnchorTest\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
     );
 

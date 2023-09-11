@@ -5,6 +5,14 @@
             "Anchor\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+          "AnchorTest\\": "tests"
+        }
+      },
+      "scripts": {
+        "test": "vendor/bin/phpunit"
+      },
     "authors": [
         {
             "name": "Qazeem Abiodun",

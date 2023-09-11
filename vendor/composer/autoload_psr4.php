@@ -61,4 +61,5 @@ return array(
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Anchor\\' => array($baseDir . '/src'),
+    'AnchorTest\\' => array($baseDir . '/tests'),
 );
