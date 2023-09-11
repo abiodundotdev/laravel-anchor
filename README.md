@@ -103,7 +103,11 @@ class AppController extends Controller
 ```
 
 
-> NOTE THAT TO PASS THE DATA ARGUMENT, CHECK THE DOCUMENTATION AND FILL THE FIELDS WITH ANY RANDOM VALUES, VIST [https://wtools.io/convert-json-to-php-array](https://wtools.io/convert-json-to-php-array) AND PASTE THE JSON TO CONVERT TO A PHP ARRAY, THIS WILL EASE THE STRESS OF MANUALLY CONSTRUCTING AN ARRAY FOR THE JSON BODY  
+## NOTE
+
+
+> Note that to pass the data argument, check the documentation and fill the fields with any random values, vist [https://wtools.io/convert-json-to-php-array](https://wtools.io/convert-json-to-php-array) and paste the json to convert to a php array, this will ease the stress of manually constructing an array for the json body  
+
 
 
 Lets break down how the sdk work for various endpoints. Anchor SDK is grouped as seen on the documentation, so you can only use feature you need and ignore others you do not need
