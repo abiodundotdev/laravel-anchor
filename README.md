@@ -62,6 +62,7 @@ ANCHOR_SANDBOX_KEY=xxxxxxxxxxxxx
 ANCHOR_ENV=LIVE|SANDBOX
 ```
 
+
 ```php
 <?php
 
@@ -78,7 +79,7 @@ class AppController extends Controller
 {
 
     /**
-     * Create customer
+     * Create customer using Facade
      * @return Url
      */
     public function createCustomer()
@@ -89,22 +90,41 @@ class AppController extends Controller
             return '$e';
         }        
     }
+    //Type hint
+    public function createCustomer(AnchorSdk $anchorsdk)
+    {
+        try{
+            return $anchorsdk->onboarding()->createCustomer();
+        }catch(\Exception $e) {
+            return '$e';
+        }        
+    }
 }
 ```
 
 
-Lets break down how the sdk work for various endpoints. Anchor is group as seen on the documentation, so you can only use feature you need and ignore others you do not need
+> NOTE THAT TO PASS THE DATA ARGUMENT, CHECK THE DOCUMENTATION AND FILL THE FIELDS WITH ANY RANDOM VALUES, VIST [https://wtools.io/convert-json-to-php-array](https://wtools.io/convert-json-to-php-array) AND PASTE THE JSON TO CONVERT TO A PHP ARRAY, THIS WILL EASE THE STRESS OF MANUALLY CONSTRUCTING AN ARRAY FOR THE JSON BODY  
+
+
+Lets break down how the sdk work for various endpoints. Anchor SDK is grouped as seen on the documentation, so you can only use feature you need and ignore others you do not need
 
 
 ```php
 /**
- * Anchor Onboarding includes all the onboarding endpoints and each endpoint correspond to a method in the Coresspoing class 
+ * Using Anchor Sdk Facade 
  * 
  */
 $onboarding = AnchorSdk::onboarding();
 $onboarding->createCustomer();
 $onboarding->getAllCustomers();
 
+/**
+ * Alternatively, you can type hint and it will be resolved from the container.
+ */
+
+function createCustomer(AnchorSdk $anchorSdk){
+    $anchorSdk->groupapi()->dowatever();
+}
 
 /**
  * Alternatively, use the helper.
@@ -112,7 +132,7 @@ $onboarding->getAllCustomers();
 anchorSdk()->onboarding();
 
 /**
- * Anchor collections includes all the collections endpoints and each endpoint correspond to a method in the Coresponing class 
+ * Anchor collections includes all the collections endpoints and each endpoint correspond to a method in the Corresponing class 
  * 
  */
 $collections = AnchorSdk::collections();
@@ -135,12 +155,10 @@ Please feel free to fork this package and contribute by submitting a pull reques
 
 ## How can I thank you?
 
-Why not star the github repo? I'd love the attention! Why not share the link for this repository on Twitter or HackerNews? Spread the word!
-
-Don't forget to [follow me on twitter](https://twitter.com/abiodundotdev)!
+Follow me on Twitter [follow me on twitter](https://twitter.com/abiodundotdev)!
 
 Thanks!
-Prosper Otemuyiwa.
+Qazeem Abiodun (abiodundotdev).
 
 ## License
 
