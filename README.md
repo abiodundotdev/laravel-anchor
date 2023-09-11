@@ -54,7 +54,7 @@ php artisan vendor:publish --provider="Anchor\Providers\AnchorProvider"
 
 ## Usage
 
-Open your .env file and add your public key, secret key, merchant email and payment url like so:
+Open your .env file and add your secret key, current enviroment either live or sandbox:
 
 ```php
 ANCHOR_LIVE_KEY=xxxxxxxxxxxxx
