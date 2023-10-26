@@ -6,7 +6,6 @@ use Anchor\Constants\HttpStatusCode;
 use Anchor\Exceptions\ConflictException;
 use Anchor\Exceptions\ForbiddenException;
 use Anchor\Exceptions\NotFoundException;
-use Anchor\Exceptions\PreconditionException;
 use Anchor\Exceptions\PreconditionFailedException;
 use Anchor\Exceptions\ServerErrorException;
 use Anchor\Exceptions\ServiceUnavailableException;
@@ -14,7 +13,6 @@ use Anchor\Exceptions\TooManyRequestException;
 use Anchor\Exceptions\UnauthorizedException;
 use GuzzleHttp\Client; 
 use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface;
 
 class AnchorHttp{
     public $client;
