@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Summary of Anchor
  */
-class Anchor extends Facade{
+class AnchorFacade extends Facade{
       /**
      * Get the registered name of the component.
      */
