@@ -1,0 +1,7 @@
+providers:
+  - Anchor\Providers\AnchorProvider
+
+env:
+  - ANCHOR_LIVE_KEY=xxxxxxxxxxxxx
+  - ANCHOR_SANDBOX_KEY=xxxxxxxxxxxxx
+  - ANCHOR_ENV=SANDBOX

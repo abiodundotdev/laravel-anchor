@@ -9,10 +9,10 @@ use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 
 class AnchorSdkTest extends TestbenchTestCase{
-        function test_is_a_onboarding_class(){
-           // $this->assertInstanceOf(AnchorOnboarding::class, AnchorFacade::onboarding());
+        function test_return_type_is_a_onboarding_class(){
+           $this->assertInstanceOf(AnchorOnboarding::class, AnchorFacade::onboarding());
         }
-        //TODO: Replcace with workbench
+        //TODO: Replace with workbench
         protected function getPackageProviders($app)
         {
             return [
