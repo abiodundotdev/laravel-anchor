@@ -19,7 +19,7 @@ use Orchestra\Testbench\TestCase as TestbenchTestCase;
 class AnchorSdkTest extends TestbenchTestCase{
         private $anchorSdk;
 
-        public function setUp(): void{
+        protected function setUp(): void{
             parent::setUp();
             $this->anchorSdk = new AnchorSdk();
         }
