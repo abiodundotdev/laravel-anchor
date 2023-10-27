@@ -34,11 +34,6 @@ class AnchorBanking extends AnchorHttp{
     public function fetchDepositAccount($accountId, $include = ""){
         return $this->get($this->accountEndpoint."$accountId", ["include" => $include]);
     }
-    /**
-     * List all deposit accounts
-     * Query paramter must be an associative array with each key and value corresponding to the query parameter and its value
-     * Example [ 'accountType' => 'accountType'] 
-     */
     public function fetchAllDepositAccounts($query){
         return $this->get($this->accountEndpoint, $query );
     }
