@@ -27,13 +27,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: php-actions/composer@v6
+    # - uses: php-actions/phpunit@v3
 
     #   - name: Install dependencies
     #     run:  composer install
 
       - name: Run tests
         id: test_output
-        run: ./vendor/bin/phpunit --verbose tests
+        run: vendor/bin/phpunit
       
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
