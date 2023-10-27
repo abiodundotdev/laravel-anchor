@@ -40,7 +40,7 @@ jobs:
         id: get_emails
         run: echo "::set-output name=emails::$(cat "${{env.EMAILS_FILE}}")"
         
-      - name: Send mail to succesful test
+      - name: Send mail on succesful test
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
