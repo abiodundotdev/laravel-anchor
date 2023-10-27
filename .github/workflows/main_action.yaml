@@ -1,0 +1,65 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Anchor Laravel Automated Test
+
+on:
+  workflow_dispatch:
+    inputs:
+        description:
+          description: 'Brief description'
+          required: true
+        permalink:
+          description: 'Clubhouse Permalink'
+          required: true
+  push:
+    branches: [ "main" ]
+
+env:
+  EMAILS_FILE: ./forward_emails.txt
+
+jobs:
+  run_test :
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: php-actions/composer@v6
+
+      - name: Install dependencies
+        run:  composer install
+
+      - name: Run tests
+        id: test_output
+        run: ./vendor/bin/phpunit --verbose tests
+      
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
+          
+      - name: Get forward emails
+        id: get_emails
+        run: echo "::set-output name=emails::$(cat "${{env.EMAILS_FILE}}")"
+        
+      - name: Send mail to succesful test
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.EMAIL_USERNAME}}
+          password: ${{secrets.EMAIL_PASSWORD}}
+          subject: Successfully tested and published the package
+          to: ${{steps.get_emails.outputs.emails}}
+          from: Qazeem Qudus Abiodun (Package Author)
+          # Optional plain body:
+          body: |
+            <html>
+            <h1>Test Successful</h1>
+            <p>Successfully  tested the SDK Thanks Love</p>
+            <p>Successfully tested </p>
+            </html>
+          
+          
