@@ -1,8 +1,10 @@
 <?php 
 namespace Anchor\Sdk;
 
+use Anchor\Constants\AnchorEnvKey;
 use Anchor\Constants\Endpoints;
 use Anchor\Constants\HttpStatusCode;
+use Anchor\Exceptions\BadRequestException;
 use Anchor\Exceptions\ConflictException;
 use Anchor\Exceptions\ForbiddenException;
 use Anchor\Exceptions\NotFoundException;
@@ -17,15 +19,20 @@ use GuzzleHttp\Exception\GuzzleException;
 class AnchorHttp{
     public $client;
     public function __construct() {
-        $this->client = new Client([
+        $this->setHttpClient(new Client([
             'base_uri' => $this->deriveBaseUrl(),
             'headers' => [
                 'x-anchor-key' => $this->deriveSecretKey(),
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],
-        ]);
+        ]));
     }
+
+    public function setHttpClient(Client $httpClient) {
+        $this->client = $httpClient;
+    }
+
     public function get($uri, array $options = [])
     {
         return $this->request("GET", $uri, 
@@ -55,18 +62,18 @@ class AnchorHttp{
     }
 
     private function deriveBaseUrl() : string{
-        $currentEnv = env("ANCHOR_ENV");
+        $currentEnv = env(AnchorEnvKey::$CURRENTENV);
         if($currentEnv == "LIVE"){
             return Endpoints::$baseUrlLive;
         }
         return Endpoints::$baseUrlSandbox;
     }
     private function deriveSecretKey() : string {
-        $currentEnv = env("ANCHOR_ENV");
+        $currentEnv = env(AnchorEnvKey::$CURRENTENV);
         if($currentEnv == "LIVE"){
-            return env("ANCHOR_LIVE_KEY");
+            return env(AnchorEnvKey::$LIVE);
         }
-        return env("ANCHOR_SANDBOX_KEY");
+        return env(AnchorEnvKey::$SANDBOX);
     }
 
 
@@ -105,6 +112,8 @@ class AnchorHttp{
         switch ($errorStatusCode) {
             case HttpStatusCode::$unauthorized :
                 throw new UnauthorizedException($errorMessage);
+            case HttpStatusCode::$badRequest :
+                    throw new BadRequestException($errorMessage);
             case HttpStatusCode::$forbidden :
                 throw new ForbiddenException($errorMessage);
             case HttpStatusCode::$notFound :
