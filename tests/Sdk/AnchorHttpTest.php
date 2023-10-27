@@ -11,7 +11,6 @@ use Anchor\Exceptions\ServiceUnavailableException;
 use Anchor\Exceptions\TooManyRequestException;
 use Anchor\Exceptions\UnauthorizedException;
 use Anchor\Sdk\AnchorHttp;
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;

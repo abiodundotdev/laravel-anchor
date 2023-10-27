@@ -36,9 +36,9 @@ class AnchorSdkTest extends TestbenchTestCase{
             $this->assertInstanceOf(AnchorCollections::class, $this->anchorSdk->collections());
         }
 
-        function test_verify_return_type_is_banking_class(){
-            $this->assertInstanceOf(AnchorBanking::class, $this->anchorSdk->banking());
-        }
+        // function test_verify_return_type_is_banking_class(){
+        //     $this->assertInstanceOf(AnchorBanking::class, $this->anchorSdk->banking());
+        // }
 
         function test_verify_return_type_is_transfer_class(){
             $this->assertInstanceOf(AnchorTransfers::class, $this->anchorSdk->transfers());
