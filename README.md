@@ -38,7 +38,7 @@ Also, register the Facade like so:
 ```php
 'aliases' => [
     ...
-    'AnchorSdk' => Anchor\Facades\Anchor::class,
+    'AnchorSdk' => Anchor\Facades\AnchorFacade::class,
     ...
 ]
 ```
@@ -85,7 +85,7 @@ class AppController extends Controller
     public function createCustomer()
     {
         try{
-            return AnchorSdk::onboarding()->createCustomer();
+            return AnchorFacade::onboarding()->createCustomer();
         }catch(\Exception $e) {
             return '$e';
         }        
@@ -117,7 +117,7 @@ Lets break down how the sdk work for various endpoints. Anchor SDK is grouped as
  * Using Anchor Sdk Facade 
  * 
  */
-$onboarding = AnchorSdk::onboarding();
+$onboarding = AnchorFacade::onboarding();
 $onboarding->createCustomer();
 $onboarding->getAllCustomers();
 
@@ -138,7 +138,7 @@ anchorSdk()->onboarding();
  * Anchor collections includes all the collections endpoints and each endpoint correspond to a method in the Corresponing class 
  * 
  */
-$collections = AnchorSdk::collections();
+$collections = AnchorFacade::collections();
 $collections->createVirtualNuban();
 $collections->fetchpayment();
 ```
@@ -147,7 +147,7 @@ $collections->fetchpayment();
 
 > Every grouped endpoints on the [documentation](https://docs.getanchor.co/) has the same format as above. They follow the simplified way of, 
 ```php 
-AnchorSdk::groupname()->endpointname()
+AnchorFacade::groupname()->endpointname()
 ```
 
 
