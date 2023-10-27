@@ -61,13 +61,15 @@ class AnchorHttp{
         }
         return Endpoints::$baseUrlSandbox;
     }
-    private function deriveSecretKey() : string{
+    private function deriveSecretKey() : string {
         $currentEnv = env("ANCHOR_ENV");
         if($currentEnv == "LIVE"){
             return env("ANCHOR_LIVE_KEY");
         }
         return env("ANCHOR_SANDBOX_KEY");
     }
+
+
 
     private function request($method, $url, $data = []){
         $response = "";

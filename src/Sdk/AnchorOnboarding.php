@@ -35,7 +35,7 @@ class AnchorOnboarding extends AnchorHttp{
         return $this->get($this->customerEndpoint."/$customerId",  ['include' => $include]);
     }
     public function fetchAllCustomers($customerType= "", $metadata = "", $query = "", $page = "", $size = "", $sort = "", $include= ""){
-        return $this->get($this->customerEndpoint, []
+        return $this->get($this->customerEndpoint, ['customerType' => $customerType, 'metadata' => $metadata, 'query' => $query ,'page'=> $page, 'size' => $size, 'sort' =>  $sort, 'include' => $include]
         );
     }
     public function deleteCustomer($customerId){

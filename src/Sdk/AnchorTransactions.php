@@ -4,7 +4,8 @@ namespace Anchor\Sdk;
 use Anchor\Constants\Endpoints;
 
 class AnchorTransactions extends AnchorHttp{
-    private $transactionsEndpoint = Endpoints::$transactions;
+    private $transactionsEndpoint;
+    
 
     public function __construct() {
         parent::__construct(); 

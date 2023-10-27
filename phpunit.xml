@@ -25,6 +25,9 @@
 
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="ANCHOR_LIVE_KEY" value="xxxxxxxxxxxxx"/>
+        <env name="ANCHOR_SANDBOX_KEY" value="xxxxxxxxxxxxx"/>
+        <env name="ANCHOR_ENV" value="SANDBOX"/>
     </php>
 
 </phpunit>
